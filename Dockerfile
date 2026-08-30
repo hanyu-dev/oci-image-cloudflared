@@ -8,6 +8,7 @@ FROM docker.io/library/golang:${IMAGE_GOLANG_VERSION}@sha256:${IMAGE_GOLANG_DIGE
 
 RUN set -e && \
     apk add --no-cache \
+    ca-certificates=20260611-r0 \
     git=2.54.0-r0
 
 RUN set -e && \
@@ -67,6 +68,7 @@ LABEL org.opencontainers.image.title="Cloudflare Tunnel client" \
 ARG UID
 ARG GID
 
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=builder --chown="${UID}:${GID}" --chmod=775 /src/cloudflared/cloudflared /opt/cloudflared/cloudflared
 
 WORKDIR /opt/cloudflared
