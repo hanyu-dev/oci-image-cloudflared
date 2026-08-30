@@ -1,0 +1,36 @@
+[Unit]
+Description=Cloudflared Tunnel Container Service
+RequiresMountsFor=%t/containers
+
+[Container]
+# ================================
+# * Basic settings
+# ================================
+ContainerName=cloudflared
+Image=ghcr.io/hanyu-dev/oci-image-cloudflared:latest
+AutoUpdate=registry
+
+# ================================
+# * Security settings
+# ================================
+NoNewPrivileges=true
+DropCapability=ALL
+AddCapability=CAP_NET_BIND_SERVICE
+
+# ================================
+# * Network settings
+# ================================
+# Network=container-br0.network
+
+# ================================
+# * Application settings
+# ================================
+Environment=TUNNEL_TOKEN=
+Exec=tunnel run
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
