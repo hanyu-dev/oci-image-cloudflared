@@ -1,0 +1,13 @@
+[Unit]
+Description=Cloudflared UNIX domain sockets volume
+RequiresMountsFor=%t/containers
+
+[Volume]
+VolumeName=cloudflared
+Driver=local
+
+[Service]
+ExecStartPost=/usr/bin/bash -c "/usr/bin/podman unshare chmod 777 $$(/usr/bin/podman volume inspect cloudflared -f '{{.Mountpoint}}')"
+
+[Install]
+WantedBy=default.target
