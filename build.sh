@@ -11,8 +11,8 @@ IMAGE_CLOUDFLARED_VERSION="${IMAGE_CLOUDFLARED_VERSION:-}"
 IMAGE_CLOUDFLARED_COMMIT="${IMAGE_CLOUDFLARED_COMMIT:-}"
 IMAGE_BUILD_REVISION="${IMAGE_BUILD_REVISION:-}"
 
-IMAGE_REGISTRY="${IMAGE_REGISTRY:-}"
 IMAGE_NAME="${IMAGE_NAME:-}"
+IMAGE_REGISTRY="${IMAGE_REGISTRY:-}"
 IMAGE_BUILD_TARGET_GOARCHS="${IMAGE_BUILD_TARGET_GOARCHS:-amd64}"
 
 while [[ $# -gt 0 ]]; do
@@ -20,6 +20,18 @@ while [[ $# -gt 0 ]]; do
 	--push)
 		PUSH=true
 		shift
+		;;
+	--image-name)
+		IMAGE_NAME="$2"
+		shift 2
+		;;
+	--image-registry)
+		IMAGE_REGISTRY="$2"
+		shift 2
+		;;
+	--image-build-target-goarchs)
+		IMAGE_BUILD_TARGET_GOARCHS="$2"
+		shift 2
 		;;
 	--image-cloudflared-version)
 		IMAGE_CLOUDFLARED_VERSION="$2"
@@ -33,18 +45,6 @@ while [[ $# -gt 0 ]]; do
 		IMAGE_BUILD_REVISION="$2"
 		shift 2
 		;;
-	--image-registry)
-		IMAGE_REGISTRY="$2"
-		shift 2
-		;;
-	--image-name)
-		IMAGE_NAME="$2"
-		shift 2
-		;;
-	--go-arch)
-		IMAGE_BUILD_TARGET_GOARCHS="$2"
-		shift 2
-		;;
 	*)
 		echo "Unknown option: '$1'"
 		exit 1
@@ -52,7 +52,7 @@ while [[ $# -gt 0 ]]; do
 	esac
 done
 
-if [ -z "$IMAGE_CLOUDFLARED_VERSION" ] || [ -z "$IMAGE_CLOUDFLARED_COMMIT" ] || [ -z "$IMAGE_BUILD_REVISION" ] || [ -z "$IMAGE_REGISTRY" ] || [ -z "$IMAGE_NAME" ] || [ -z "$IMAGE_BUILD_TARGET_GOARCHS" ]; then
+if [ -z "$IMAGE_NAME" ] || [ -z "$IMAGE_REGISTRY" ] || [ -z "$IMAGE_BUILD_TARGET_GOARCHS" ] || [ -z "$IMAGE_CLOUDFLARED_VERSION" ] || [ -z "$IMAGE_CLOUDFLARED_COMMIT" ] || [ -z "$IMAGE_BUILD_REVISION" ]; then
 	echo "Missing required variables!"
 	exit 1
 fi

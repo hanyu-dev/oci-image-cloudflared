@@ -48,12 +48,12 @@ jobs:
               -w /workspace \
               -e IMAGE_NAME="${IMAGE_NAME}" \
               -e IMAGE_REGISTRY="${IMAGE_REGISTRY}" \
+              -e IMAGE_REGISTRY_USERNAME="${IMAGE_REGISTRY_USERNAME}" \
+              -e IMAGE_REGISTRY_PASSWORD="${IMAGE_REGISTRY_PASSWORD}" \
               -e IMAGE_BUILD_TARGET_GOARCHS="${IMAGE_BUILD_TARGET_GOARCHS}" \
               -e IMAGE_CLOUDFLARED_VERSION="${IMAGE_CLOUDFLARED_VERSION}" \
               -e IMAGE_CLOUDFLARED_COMMIT="${IMAGE_CLOUDFLARED_COMMIT}" \
               -e IMAGE_BUILD_REVISION="${IMAGE_BUILD_REVISION}" \
-              -e IMAGE_REGISTRY_USERNAME="${IMAGE_REGISTRY_USERNAME}" \
-              -e IMAGE_REGISTRY_PASSWORD="${IMAGE_REGISTRY_PASSWORD}" \
               --user=root \
               quay.io/buildah/stable:v${IMAGE_BUILDAH_VERSION}@sha256:${IMAGE_BUILDAH_DIGEST} \
               ./build.sh --push
