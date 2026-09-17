@@ -15,7 +15,7 @@ env:
   # See https://github.com/cloudflare/cloudflared/releases
   IMAGE_CLOUDFLARED_VERSION: 2026.9.1
   IMAGE_CLOUDFLARED_COMMIT: f11dea9cb7079e90a982c1a2d5548ab40847fdcf
-  IMAGE_BUILD_REVISION: 0
+  IMAGE_BUILD_REVISION: 1
   # See https://quay.io/repository/buildah/stable?tab=tags
   IMAGE_BUILDAH_VERSION: 1.43.2-immutable
   IMAGE_BUILDAH_DIGEST: 19ee6da290f77e63ab7f108a1b22e63d4c36cb827fba9f494982c5ceeba27019

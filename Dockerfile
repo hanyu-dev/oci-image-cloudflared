@@ -8,7 +8,7 @@ FROM docker.io/library/golang:${IMAGE_GOLANG_VERSION}@sha256:${IMAGE_GOLANG_DIGE
 
 RUN set -e && \
     apk add --no-cache \
-    ca-certificates=20260611-r0 \
+    ca-certificates=20260909-r0 \
     git=2.54.0-r0
 
 RUN set -e && \
