@@ -39,7 +39,7 @@ RUN \
     GOOS=linux \
     GOARCH=${IMAGE_BUILD_TARGET_GOARCH} \
     go build \
-        -mod=vendor \
+        -mod=readonly \
         -trimpath \
         -buildvcs=false \
         -ldflags="-X 'main.Version=${IMAGE_CLOUDFLARED_VERSION}' -X 'main.BuildTime=${IMAGE_VCS_DATE}' -X 'github.com/cloudflare/cloudflared/metrics.Runtime=virtual' -w -s" \

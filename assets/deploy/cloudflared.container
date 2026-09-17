@@ -1,5 +1,5 @@
 [Unit]
-Description=Cloudflared Tunnel Container Service
+Description=Container 'cloudflared' service
 RequiresMountsFor=%t/containers
 
 [Container]
