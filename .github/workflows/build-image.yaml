@@ -13,8 +13,8 @@ env:
   IMAGE_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
   IMAGE_BUILD_TARGET_GOARCHS: amd64,arm64,loong64
   # See https://github.com/cloudflare/cloudflared/releases
-  IMAGE_CLOUDFLARED_VERSION: 2026.10.0
-  IMAGE_CLOUDFLARED_COMMIT: 18cdfe0a6fc7b72a0702d255a1f984e776ce0498
+  IMAGE_CLOUDFLARED_VERSION: 2026.10.3
+  IMAGE_CLOUDFLARED_COMMIT: de6376c5af4a67cbc65258682e5a01781827643d
   IMAGE_BUILD_REVISION: 0
   # See https://quay.io/repository/buildah/stable?tab=tags
   IMAGE_BUILDAH_VERSION: 1.43.5-immutable
