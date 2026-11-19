@@ -1,8 +1,5 @@
-ARG IMAGE_GOLANG_VERSION=1.27.3-alpine3.24
-ARG IMAGE_GOLANG_DIGEST=d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb
-
-ARG UID=65532
-ARG GID=65532
+ARG IMAGE_GOLANG_VERSION=1.27.4-alpine3.24
+ARG IMAGE_GOLANG_DIGEST=70bd7ddea8b6cbe5d6943cde279d6b67feb10cc924fb9100d1d8757c1575b280
 
 FROM docker.io/library/golang:${IMAGE_GOLANG_VERSION}@sha256:${IMAGE_GOLANG_DIGEST} AS builder
 
@@ -65,8 +62,8 @@ LABEL org.opencontainers.image.title="Cloudflare Tunnel client" \
     org.opencontainers.image.version=${IMAGE_CLOUDFLARED_VERSION}-r${IMAGE_BUILD_REVISION} \
     org.opencontainers.image.revision=${IMAGE_VCS_REV}
 
-ARG UID
-ARG GID
+ARG UID=65532
+ARG GID=65532
 
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=builder --chown="${UID}:${GID}" --chmod=775 /src/cloudflared/cloudflared /opt/cloudflared/cloudflared
